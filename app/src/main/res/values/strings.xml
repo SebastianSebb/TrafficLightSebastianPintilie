@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TrafficLightSebastianPintilie</string>
+    <string name="input_screen_title">Enter the desired car model:</string>
+    <string name="input_field_label">Input Car Model</string>
+    <string name="input_field_placeholder">e.g. Jeep Wrangler</string>
+    <string name="input_screen_validation_error_text">Car model must be at least 3 characters.</string>
+    <string name="lets_drive_button_text">Let\'s drive!</string>
+    <string name="traffic_light_screen_title">Go through the intersection only on green light!</string>
+    <string name="car_model_name">Car Model: %1$s</string>
+    <string name="drive_button">Drive</string>
+    <string name="driving_on_green">READY TO GO</string>
+    <string name="driving_on_yellow">BREAK!</string>
+    <string name="driving_on_red">WAIT FOR GREEN!</string>
+
 </resources>

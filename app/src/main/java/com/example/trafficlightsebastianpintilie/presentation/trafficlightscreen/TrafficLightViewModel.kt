@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.trafficlightsebastianpintilie.R
 import com.example.trafficlightsebastianpintilie.domain.TrafficLightColor
 import com.example.trafficlightsebastianpintilie.domain.TrafficLightUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,15 +26,15 @@ class TrafficLightViewModel @Inject constructor(
     fun initiateDrive(context: Context) {
         when (currentState.value) {
             TrafficLightColor.RED -> {
-                showToast(context, "STAY!")
+                showToast(context, context.getString(R.string.driving_on_red))
             }
 
             TrafficLightColor.YELLOW -> {
-                showToast(context, "BREAK!")
+                showToast(context, context.getString(R.string.driving_on_yellow))
             }
 
             TrafficLightColor.GREEN -> {
-                showToast(context, "READY TO GO")
+                showToast(context, context.getString(R.string.driving_on_green))
             }
         }
     }

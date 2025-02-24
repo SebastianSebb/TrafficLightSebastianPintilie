@@ -14,7 +14,7 @@ class InputViewModel @Inject constructor(
     private val carModelLenghtValidationUseCase: CarModelLenghtValidationUseCase
 ) : ViewModel() {
     val inputText = mutableStateOf("")
-    val isValidInput = mutableStateOf(true)
+    val isValidInput = mutableStateOf(false)
 
     fun onInputChanged(newInput: String) {
         inputText.value = newInput

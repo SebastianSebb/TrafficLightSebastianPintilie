@@ -26,12 +26,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.trafficlightsebastianpintilie.R
 
 @Composable
 fun InputScreen(
@@ -49,7 +51,7 @@ fun InputScreen(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Enter the desired car model:",
+            text = stringResource(id = R.string.input_screen_title),
             style = MaterialTheme.typography.bodyLarge.copy(
                 fontWeight = FontWeight.Bold,
                 color = Color.DarkGray,
@@ -98,8 +100,8 @@ fun CarModelField(
             value = value,
             onValueChange = onValueChange,
             isError = !isValid,
-            label = { Text("Input Car Model") },
-            placeholder = { Text("e.g. Jeep Wrangler") },
+            label = { Text(stringResource(id = R.string.input_field_label)) },
+            placeholder = { Text(stringResource(id = R.string.input_field_placeholder)) },
             singleLine = true,
             keyboardOptions = KeyboardOptions.Default.copy(
                 imeAction = ImeAction.Done // Show 'Done' button on the keyboard
@@ -118,7 +120,7 @@ fun CarModelField(
 
         if (!isValid) {
             Text(
-                text = "Car model must be at least 3 characters.",
+                text = stringResource(id = R.string.input_screen_validation_error_text),
                 color = Color.Red,
                 style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
                 modifier = Modifier.padding(top = 8.dp)
@@ -150,7 +152,7 @@ fun NavigateToTrafficLight(
             .background(Color(0xFF6200EE))
     ) {
         Text(
-            text = "Let's drive!",
+            text = stringResource(id = R.string.lets_drive_button_text),
             style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
         )
     }

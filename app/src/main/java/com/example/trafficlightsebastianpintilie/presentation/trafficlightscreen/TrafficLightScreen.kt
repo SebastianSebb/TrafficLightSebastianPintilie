@@ -23,10 +23,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.trafficlightsebastianpintilie.R
 
 @Composable
 fun TrafficLightScreen(
@@ -43,7 +45,7 @@ fun TrafficLightScreen(
     ) {
 
         Text(
-            text = "Go through the intersection only on green light!",
+            text = stringResource(id = R.string.traffic_light_screen_title),
             style = MaterialTheme.typography.bodyMedium.copy(
                 fontWeight = FontWeight.Bold,
                 color = Color.DarkGray,
@@ -74,7 +76,7 @@ fun DisplayCarModelText(receivedText: String) {
             .clip(RoundedCornerShape(8.dp))
     ) {
         Text(
-            text = "Car Model: $receivedText",
+            text = stringResource(id = R.string.car_model_name, receivedText),
             style = MaterialTheme.typography.bodyMedium.copy(
                 fontWeight = FontWeight.Medium,
                 color = Color.DarkGray
@@ -101,7 +103,7 @@ fun DriveButton(viewModel: TrafficLightViewModel, context: Context) {
             .height(48.dp)
     ) {
         Text(
-            text = "Drive",
+            text = stringResource(id = R.string.drive_button),
             style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold)
         )
     }

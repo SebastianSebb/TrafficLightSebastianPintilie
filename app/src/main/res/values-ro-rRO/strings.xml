@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TrafficLightSebastianPintilie</string>
+    <string name="input_screen_title">Introdu modelul masinii dorit:</string>
+    <string name="input_field_label">Introdu modelul masinii</string>
+    <string name="input_field_placeholder">ex: Jeep Wrangler</string>
+    <string name="input_screen_validation_error_text">Modelul masinii trebuie sa aiba minim 3 caractere.</string>
+    <string name="lets_drive_button_text">La drum!</string>
+    <string name="traffic_light_screen_title">Continua in intersectie doar la lumina verde!</string>
+    <string name="car_model_name">Modelul masinii: %1$s</string>
+    <string name="drive_button">Condu</string>
+    <string name="driving_on_green">GATA DE PLECARE</string>
+    <string name="driving_on_yellow">FRANEAZA!</string>
+    <string name="driving_on_red">ASTEAPTA CULOAREA VERDE!</string>
+
+</resources>
