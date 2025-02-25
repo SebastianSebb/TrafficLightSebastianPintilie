@@ -29,7 +29,7 @@ class InputViewModel @Inject constructor(
         }
     }
 
-    fun isButtonEnabled(): Boolean {
+    fun isLengthValid(): Boolean {
         return isValidInput.value
     }
 

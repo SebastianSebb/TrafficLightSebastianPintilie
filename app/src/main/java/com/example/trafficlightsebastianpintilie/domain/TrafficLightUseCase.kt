@@ -12,13 +12,18 @@ class TrafficLightUseCase @Inject constructor() {
     suspend fun startTrafficLightCycle() {
         while (true) {
             _currentState.value = TrafficLightColor.GREEN
-            delay(4000)
+            delay(LONG_DELAY)
 
             _currentState.value = TrafficLightColor.YELLOW
-            delay(1000)
+            delay(SHORT_DELAY)
 
             _currentState.value = TrafficLightColor.RED
-            delay(4000)
+            delay(LONG_DELAY)
         }
+    }
+
+    companion object DelayTimers {
+        const val LONG_DELAY = 4000L
+        const val SHORT_DELAY = 1000L
     }
 }

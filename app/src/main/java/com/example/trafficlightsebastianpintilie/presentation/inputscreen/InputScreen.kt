@@ -19,9 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -64,18 +62,15 @@ fun InputScreen(
         CarModelField(
             value = carModel,
             onValueChange = { viewModel.onInputChanged(it) },
-            viewModel = viewModel,
-            context = context,
-            navController = navController
+            isLengthValid = viewModel.isLengthValid(),
+            onDoneClick = { viewModel.submitInput(context, carModel, navController) }
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
         NavigateToTrafficLight(
-            viewModel = viewModel,
-            carModel = carModel,
-            context = context,
-            navController = navController
+            onDoneClick = { viewModel.submitInput(context, carModel, navController) },
+            isLengthValid = viewModel.isLengthValid()
         )
     }
 }
@@ -84,14 +79,9 @@ fun InputScreen(
 fun CarModelField(
     value: String,
     onValueChange: (String) -> Unit,
-    viewModel: InputViewModel,
-    context: Context,
-    navController: NavController
+    isLengthValid: Boolean,
+    onDoneClick: () -> Unit,
 ) {
-    var isValid by remember { mutableStateOf(true) }
-
-    val isValidInput = value.length >= 3
-    isValid = isValidInput
 
     Column(
         horizontalAlignment = Alignment.Start
@@ -99,16 +89,16 @@ fun CarModelField(
         TextField(
             value = value,
             onValueChange = onValueChange,
-            isError = !isValid,
+            isError = !isLengthValid,
             label = { Text(stringResource(id = R.string.input_field_label)) },
             placeholder = { Text(stringResource(id = R.string.input_field_placeholder)) },
             singleLine = true,
             keyboardOptions = KeyboardOptions.Default.copy(
-                imeAction = ImeAction.Done // Show 'Done' button on the keyboard
+                imeAction = ImeAction.Done
             ),
             keyboardActions = KeyboardActions(
                 onDone = {
-                    viewModel.submitInput(context, value, navController)
+                    onDoneClick()
                 }
             ),
             modifier = Modifier
@@ -118,7 +108,7 @@ fun CarModelField(
                 .background(Color.White)
         )
 
-        if (!isValid) {
+        if (!isLengthValid) {
             Text(
                 text = stringResource(id = R.string.input_screen_validation_error_text),
                 color = Color.Red,
@@ -131,20 +121,18 @@ fun CarModelField(
 
 @Composable
 fun NavigateToTrafficLight(
-    viewModel: InputViewModel,
-    carModel: String,
-    context: Context,
-    navController: NavController
+    onDoneClick: () -> Unit,
+    isLengthValid: Boolean
 ) {
     Button(
         onClick = {
-            viewModel.submitInput(context, carModel, navController)
+            onDoneClick()
         },
         colors = ButtonDefaults.buttonColors(
             containerColor = Color(0xFF6200EE),
             contentColor = Color.White
         ),
-        enabled = viewModel.isButtonEnabled(),
+        enabled = isLengthValid,
         modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)

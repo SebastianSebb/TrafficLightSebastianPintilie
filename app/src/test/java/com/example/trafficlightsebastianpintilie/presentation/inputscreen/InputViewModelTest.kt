@@ -5,12 +5,10 @@ import com.example.trafficlightsebastianpintilie.domain.CarModelLenghtValidation
 import com.example.trafficlightsebastianpintilie.presentation.inputscreen.InputViewModel
 import io.mockk.*
 import junit.framework.TestCase.assertEquals
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class InputViewModelTest {
 
     private lateinit var viewModel: InputViewModel
@@ -65,7 +63,6 @@ class InputViewModelTest {
         verify { toastMock.show() }
     }
 
-
     @Test
     fun `test submitInput calls navigate when input is valid`() = runTest {
         every { carModelLenghtValidationUseCase.execute("Ford") } returns true
@@ -77,5 +74,4 @@ class InputViewModelTest {
 
         verify { navController.navigate("traffic_light_fragment/Ford") }
     }
-
 }
